@@ -1,66 +1,78 @@
-# code-review-checklist
+# 📱 Mobile Code Review Checklist
 
 ## 1. Code Quality
-- [ ] Code is clean, readable, and well-formatted
-- [ ] Follows the project's coding conventions or style guide
-- [ ] Uses meaningful variable, method and class names
-- [ ] Avoid deep nesting and long functions
-- [ ] No commented-out or un-used code blocks
+- [ ] Code follows platform/language-specific style guides (e.g., SwiftLint, Ktlint)
+- [ ] Code is clean, readable, and consistently formatted
+- [ ] Uses descriptive names for variables, methods, and classes
+- [ ] Avoids deep nesting and large functions
+- [ ] No commented-out or unused code left behind
 
-## 2. Functionality
-- [ ] Code meets all business/functional requirements
-- [ ] Handle edge cases and input validation
-- [ ] Implements error handling and fallbacks
-- [ ] All logic is covered by approriate tests
+## 2. Architecture & Design
+- [ ] Follows established architecture (MVVM, MVI, Clean Architecture, etc.)
+- [ ] Code is modular and adheres to separation of concerns
+- [ ] Logic is encapsulated in ViewModels/UseCases, not UI controllers
+- [ ] Dependency injection is used where appropriate
 
-## 3. Security
-- [ ] Inputs are validated and sanitized
-- [ ] No hardcoded secrets or credentials
-- [ ] Sensitive data is encrypted or masked appropriately
-- [ ] Access controls and permissions are enforced
-- [ ] No sensitive data leakage in logs or error message
+## 3. Functionality
+- [ ] Feature works as intended and matches requirements
+- [ ] Validates user inputs correctly
+- [ ] Handles offline/poor network conditions gracefully
+- [ ] Appropriate error handling and user feedback is provided
 
-## 4. Performance
-- [ ] Code is optimized for performance
-- [ ] Expensive operations are minimized or cached
-- [ ] Efficient use of loops, memory and resources
-- [ ] Async logic is used where appropriate
+## 4. UI/UX
+- [ ] Layout works on various screen sizes and orientations
+- [ ] Animations and transitions are smooth and appropriate
+- [ ] Follows platform design guidelines (Material Design / Human Interface)
+- [ ] Accessibility (a11y) features like TalkBack/VoiceOver are supported
+- [ ] Font sizes and touch targets meet accessibility standards
 
-## 5. Maintainability
-- [ ] Code is modular and separated by concern
-- [ ] Duplicated logic is refactored (DRY principle)
-- [ ] Avoids magic numbers and uses contants/configs
-- [ ] Easy to understand, extend and test
+## 5. Performance
+- [ ] Avoids unnecessary recompositions or view redraws
+- [ ] Images are optimized and properly cached
+- [ ] Network and database operations are performed asynchronously
+- [ ] Lazy loading and pagination are used where applicable
+- [ ] Memory usage is monitored (no leaks, OOM risk, etc.)
 
-## 6. Testing
+## 6. Security
+- [ ] No hardcoded secrets, keys, or credentials in the code
+- [ ] Secure storage used for sensitive data (e.g., Keychain, EncryptedSharedPreferences)
+- [ ] Permissions are requested only when needed
+- [ ] Input is validated and sanitized to avoid injection or crashes
+- [ ] Code is obfuscated/minified if required for release builds
+
+## 7. Testing
 - [ ] Unit tests cover core logic
-- [ ] Integration and/or E2E tests cover main flow
-- [ ] Tests are reliable and do not randomly fail
-- [ ] Good test coverage for edge cases
-- [ ] No dependencies on external system (use mocks)
+- [ ] UI/E2E tests exist for main flows (Espresso, XCTest, Detox, etc.)
+- [ ] No flaky or slow tests
+- [ ] Tests are run in CI and pass consistently
+- [ ] Mocks/Fakes used for dependencies in unit tests
 
-## 7. Documentation
-- [ ] Public classes/method are documented
-- [ ] Complex logic is explained with comments
-- [ ] API contracts and usage examples are provided
-- [ ] README or usage guides are updated
-- [ ] Database or insfrastructure changes are documented
+## 8. Build & Configuration
+- [ ] Build variants (debug/release) are configured correctly
+- [ ] API endpoints, keys, and flags are environment-specific
+- [ ] Proguard/R8 (Android) or Bitcode settings (iOS) are correct
+- [ ] Gradle/Xcode build scripts do not include temporary hacks
+- [ ] Third-party dependencies are up-to-date and approved
 
-## 8. Version Control
-- [ ] Commits are small, atomic and meaningful
-- [ ] No debug logs or temporary files commited
-- [ ] Branch is up-to-date with base branch
-- [ ] Pull request has clear description and context
-- [ ] Related issues or tickets are referenced
+## 9. Analytics & Monitoring
+- [ ] Events and screen tracking are added where needed
+- [ ] Crash reporting is integrated and tested (e.g., Firebase Crashlytics, Sentry)
+- [ ] Logs do not expose sensitive or verbose data
+- [ ] Logging levels are appropriate for debug vs. release builds
 
-## 9. Framework/Tooling Specific
-- [ ] **Frontend**: Follows accessibility (a11y) best practices
-- [ ] **Frontend**: Works on all supported devices and browsers
-- [ ] **Mobile**: Manages lifecycle (foreground/background) well
-- [ ] **Backend**: APIs follow REST/GraphQL best practices
-- [ ] **Database**: Schema changes are backward-compatible
+## 10. Version Control
+- [ ] Small, meaningful commits
+- [ ] No generated files (e.g., `.DS_Store`, `*.iml`, `build/`) are committed
+- [ ] `.gitignore` is respected
+- [ ] PR description includes context, screenshots, and test steps
+- [ ] Feature branch is up to date with base branch
 
-## 10. Deployment Readiness
-- [ ] No environmnet-specific code or hardcoded paths
-- [ ] Uses feature toggles for incomplete features
-- [ ] CI/CD pipeline or deployment scripts are updated
+---
+
+## 🛠 Optional CI/CD Automation
+- [ ] Linting (SwiftLint, Ktlint, Dart Analyzer)
+- [ ] Static code analysis (e.g., SonarQube, Detekt)
+- [ ] Test runs for unit/UI tests
+- [ ] App build + artifact upload (e.g., Firebase App Distribution, TestFlight)
+- [ ] Security scan (e.g., MobSF, Snyk for mobile)
+
