@@ -7,7 +7,7 @@
 - [ ] Avoid deep nesting and long functions
 - [ ] No commented-out or un-used code blocks
 
-## 2. Funcionality
+## 2. Functionality
 - [ ] Code meets all business/functional requirements
 - [ ] Handle edge cases and input validation
 - [ ] Implements error handling and fallbacks
